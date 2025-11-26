@@ -1,0 +1,23 @@
+[project]
+name = "oidc-authenticator"
+version = "0.1.0"
+description = "Simple OIDC authentication service."
+authors = [{name = "Juan Cortés", email="juang.cortes@outlook.com"}] 
+maintainers = [{name = "Juan Cortés", email="juang.cortes@outlook.com"}] 
+readme = "README.md"
+license-files = ["LICENSE"]
+requires-python = ">=3.14"
+dependencies = [
+    "cryptography>=46.0.3",
+    "fastapi>=0.122.0",
+    "uvicorn>=0.38.0",
+]
+
+[project.urls]
+Repository = "https://github.com/juangcr/oidc-authenticator"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.1",
+    "ruff>=0.14.6",
+]
