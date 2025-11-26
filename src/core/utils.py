@@ -81,7 +81,9 @@ class ReadJWKFile(KeyStrategy):
             self._errors.append(KeyValidationError("Bad JWK key signature. [E007]"))
         if isinstance(data.get("keys"), list):
             data = data[0] if isinstance(data[0], dict) else {}
-        if all(k in data for k in ["kty", "kid", "n", "e", "d"]) and not self._errors:
+        if not all(k in data for k in ["kty", "kid", "n", "e", "d"]):
+            self._errors.append(KeyValidationError("JWK public key. [E008]"))
+        if not self._errors:
             try:
                 self._signature = jwk.construct(data)
             except JOSEError:
